@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+</head>
+<body>
+        <nav id="desktop-nav">
+        <div class="logo">Michael Matsuda</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contacts">Contact</a></li>
+            </ul>
+        </div>
+        </nav>
+    <nav id="hamburger-nav">
+        <div class="logo">Michael Matsuda</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="togglemenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="#about" onclick="togglemenu()">About</a></li>
+                <li><a href="#experience" onclick="togglemenu()">Experience</a></li>
+                <li><a href="#projects" onclick="togglemenu()">Projects</a></li>
+                <li><a href="#contacts" onclick="togglemenu()">Contact</a></li>
+             </div>
+        </div>
+    </nav>
+        <section id="profile">
+            <div class="section__pic-container">
+                <img src="./assets/profile-pic.png" alt="Michael Matsuda profile picture" />
+            </div>
+            <div class="section__text">
+                <p class="section__text__p1">Hello, I'm</p>
+                <h1 class="title">Michael Matsuda</h1>
+                <p class="section__text__p2">Mathematics & Engineering Student</p>
+                <div class="btn-container">
+                    <button class="btn btn-color-2" onclick="window.open('./assets/Michael_Matsuda_CV.pdf')">Download CV</button>
+                    <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
+                    <button class="btn btn-color-1" onclick="location.href='./#contact'">SDIYBT</button>
+                </div>
+                <div id="socials-container">
+                    <img src="./assets/linkedin.png" alt="My LinkedIn Profile" class = "icon" onclick="location.href='https://www.linkedin.com/in/michaelmatsuda'">
+                     <img src="./assets/github.png" alt="My Github profile" class = "icon" onclick="location.href='https://github.com/WomboCombo1012'">
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <p class="section__text__p1">Get To Know More</p>
+            <h1 class="title">About Me</h1>
+            <div class="section-container">
+                <div class="section__pic-container">
+                    <img src="./assets/about-pic.png", alt="Profile picture" class="about-pic">
+                </div>
+                <div class="about-details-container">
+                    <div class="about-containers">
+                        <div class="details-container">
+                            <img src="./assets/QueensLogo_colour.png" alt="education icon" class="icon">
+                            <h3>Education</h3>
+                            <h4>Queen's University</h4>
+                            <p>BASc Applied Mathematics & Computer Engineering<br /></p>
+                        </div>
+                    </div>
+                    <div class="text-container">
+                        <p>Hi, I’m Michael — a Mathematics and Engineering student at Queen’s University with a passion
+                            for solving complex problems at the intersection of technology, sustainability, and
+                            design. Whether I’m working on dam breach simulations, building machine learning models, or
+                            organizing campus events, I bring curiosity, structure, and creativity to everything I do.<p>
+                            I’m currently contributing to research in civil engineering and exploring how data-driven
+                            tools can inform real-world decisions in infrastructure and environmental systems. Outside
+                            of academics, I’ve been actively involved in leadership roles during Orientation Week and
+                            love collaborating with others to build welcoming, inclusive communities. <p>
+
+                            This site is where I share projects, ideas, and the journey along the way. Thanks for
+                            stopping by!</p>
+                    </div>
+                </div>
+            </div>
+            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#experience'">
+        </section>
+        <section id="experience">
+            <p class="section__text__p1">Explore My</p>
+            <h1 class="title">Experience</h1>
+            <div class="experience-details">
+                        <h2 class="expeirence-sub-title">Undergraduate Research Assistant</h2>
+                                <h3>May 2025 - Present</h3>
+                                <h4>Department of Civil Engineering, Queen's University</h4>
+                                <ul>
+                                    <li>Engineered MATLAB scripts and converted preexisting scripts into functions to streamline numerical model testing and experimental planning, reducing model setup time by 90%.</li>
+                                    <li>Conducted research on the numerical methods used to model dam breach failures, successfully identifying key characteristics which affect model accuracy.</li>
+                                    <li>Conducted data analysis and applied different regression models to predict rheological characteristics of tailings materials</li>
+                                </ul>
+                        <br>
+                        <h2 class="expeirence-sub-title">Sales and Growth Intern</h2>
+                                <h3>July 2025 - Present</h3>
+                                <h4>Amaranth Technology Inc.</h4>
+                                <ul>
+                                    <li>Engineered MATLAB scripts and converted preexisting scripts into functions to streamline numerical model testing and experimental planning, reducing model setup time by 90%.</li>
+                                    <li>Conducted research on the numerical methods used to model dam breach failures, successfully identifying key characteristics which affect model accuracy.</li>
+                                    <li>Conducted data analysis and applied different regression models to predict rheological characteristics of tailings materials</li>
+                                </ul>
+                        <br>
+                        <h2 class="expeirence-sub-title">Co-Chair</h2>
+                                <h3>May 2025 - Present</h3>
+                                <h4>inQUbate</h4>
+                                <ul>
+                                    <li>Engineered MATLAB scripts and converted preexisting scripts into functions to streamline numerical model testing and experimental planning, reducing model setup time by 90%.</li>
+                                    <li>Conducted research on the numerical methods used to model dam breach failures, successfully identifying key characteristics which affect model accuracy.</li>
+                                    <li>Conducted data analysis and applied different regression models to predict rheological characteristics of tailings materials</li>
+                                </ul>
+                        <br>
+                        <h2 class="expeirence-sub-title">Co-Director of Investment Strategy</h2>
+                                <h3>March 2025 - Present</h3>
+                                <h4>Queen's University Business and Engineering</h4>
+                                <ul>
+                                    <li>Engineered MATLAB scripts and converted preexisting scripts into functions to streamline numerical model testing and experimental planning, reducing model setup time by 90%.</li>
+                                    <li>Conducted research on the numerical methods used to model dam breach failures, successfully identifying key characteristics which affect model accuracy.</li>
+                                    <li>Conducted data analysis and applied different regression models to predict rheological characteristics of tailings materials</li>
+                                </ul>
+                        <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#projects'">
+
+        </section>
+        <section id="projects">
+            <p class="section__text__p1">Browse my Recent</p>
+            <h1 class="title">Projects</h1>
+            <div class="project-details-container">
+                <div class="projects-grid">
+                <div class="details-container color-container" >
+                    <div class="article-container">
+                        <img src="./assets/project-1.png" alt="Project 1" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Project 1</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com'">GitHub</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com'">PayGorn</button>
+                    </div>
+                </div>
+                <div class="details-container color-container" >
+                    <div class="article-container">
+                        <img src="./assets/project-2.png" alt="Project 1" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Project 2</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com'">GitHub</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com'">PayGorn</button>
+                    </div>
+                </div>
+                <div class="details-container color-container" >
+                    <div class="article-container">
+                        <img src="./assets/project-3.png" alt="Project 1" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Project 3</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com'">GitHub</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com'">PayGorn</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#contacts'">
+        </section>
+        <section id="contacts">
+            <p class="section__text__p1">Get In Touch</p>
+            <h1 class="title">Contact Me</h1>
+            <div class="contact-info-upper-container">
+                <div class="contact-info-container">
+                    <img src="./assets/email.png" alt="Email icon" class="icon contact-icon">
+                    <p><a href="mailto:michaeljmatsuda@gmail.com">michaeljmatsuda@gmail.com</a></p>
+                </div>
+                 <div class="contact-info-container">
+                    <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon">
+                    <p><a href="https://www.linkedin.com/in/michaelmatsuda">LinkedIn</a></p>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contacts">Contact</a></li>
+            </ul>
+        </div>
+            </nav>
+            <p>Made by Michael Matsuda 2025</p>
+        </footer>
+    <script src="script.js"></script>
+</body>
+</html>

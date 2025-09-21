@@ -2,14 +2,801 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mediaqueries.css">
+    <title>Michael Matsuda - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ENHANCED STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-bg: #0f0f23;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --accent-blue: #4facfe;
+            --accent-purple: #00f2fe;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            background-image:
+                radial-gradient(circle at 25% 25%, #667eea22 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #764ba222 0%, transparent 50%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ENHANCED NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav, .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-links {
+            gap: 2rem;
+            list-style: none;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo:hover {
+            cursor: default;
+        }
+
+        a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* HAMBURGER MENU ENHANCED */
+        #hamburger-nav {
+            display: none;
+        }
+
+        .hamburger-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .hamburger-icon span {
+            width: 100%;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .menu-links {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            width: fit-content;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .menu-links a {
+            display: block;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .menu-links li {
+            list-style: none;
+        }
+
+        .menu-links.open {
+            max-height: 300px;
+        }
+
+        /* ENHANCED SECTIONS */
+        section {
+            padding: 6rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* PROFILE SECTION ENHANCED */
+        #profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            text-align: center;
+        }
+
+        .section__pic-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            padding: 5px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .section__pic-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .section__text__p1 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-align: center;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.3)); }
+            to { filter: drop-shadow(0 0 30px rgba(118, 75, 162, 0.5)); }
+        }
+
+        .section__text__p2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* ENHANCED BUTTONS */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-color-1 {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-color-1:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-color-2 {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-color-2:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.3);
+        }
+
+        /* SOCIAL ICONS ENHANCED */
+        #socials-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            padding: 8px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: var(--primary-gradient);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .education-icon:hover {
+            transform: none;
+            background: none;
+            box-shadow: none;
+        }
+
+        /* ABOUT SECTION ENHANCED */
+        #about .section-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .details-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .details-container:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .about-containers .details-container:hover {
+            transform: none !important;
+            background: var(--card-bg) !important;
+            box-shadow: none !important;
+        }
+
+        .education-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .education-icon {
+            pointer-events: none;
+        }
+
+        .education-icon:hover{
+            cursor: default;
+            transform: none;
+            background: none;
+            box-shadow: none;
+        }
+
+        .text-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            line-height: 1.8;
+        }
+
+        .text-container p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* EXPERIENCE SECTION ENHANCED */
+        .experience-details {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .experience-details h2 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-details h3 {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-details h4 {
+            color: var(--accent-purple);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-details ul {
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+        }
+
+        .experience-details li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .experience-details li::before {
+            content: '▸';
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        /* PROJECTS SECTION ENHANCED */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .color-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .color-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .color-container:hover::before {
+            transform: scaleX(1);
+        }
+
+        .color-container:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .project-img:hover {
+            transform: scale(1.05);
+        }
+
+        .project-title {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* CONTACT SECTION ENHANCED */
+        .contact-info-upper-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-info-container a {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .contact-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* FOOTER ENHANCED */
+        footer {
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer nav {
+            position: static;
+            background: none;
+            border: none;
+            backdrop-filter: none;
+        }
+
+        footer .nav-links {
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ARROW ENHANCED */
+        .arrow {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .arrow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media screen and (max-width: 1200px) {
+            #desktop-nav {
+                display: none;
+            }
+            #hamburger-nav {
+                display: flex;
+            }
+
+            section {
+                padding: 3rem 1rem;
+                min-height: auto;
+            }
+
+            #about .section-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .section__pic-container {
+                max-width: 250px;
+                max-height: 250px;
+                margin: 0 auto;
+            }
+
+            .about-pic {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 50%;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            nav, .nav-links {
+                padding: 0.8rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+                min-height: fit-content;
+            }
+
+            #profile {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding-top: 6rem;
+                min-height: 100vh;
+                justify-content: center;
+            }
+
+            .section__pic-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .title {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .section__text__p1 {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .section__text__p2 {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn {
+                width: 180px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            #socials-container {
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+
+            .icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .contact-info-upper-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .contact-info-container {
+                gap: 0.8rem;
+            }
+
+            .contact-info-container p {
+                font-size: 0.9rem;
+            }
+
+            .text-container {
+                padding: 1.5rem;
+            }
+
+            .text-container p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .experience-details {
+                padding: 0 0.5rem;
+            }
+
+            .experience-details h2 {
+                font-size: 1.3rem;
+            }
+
+            .experience-details h3,
+            .experience-details h4 {
+                font-size: 0.9rem;
+            }
+
+            .experience-details li {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .project-title {
+                font-size: 1rem;
+                margin: 0.8rem;
+            }
+
+            .color-container {
+                padding: 1.5rem;
+            }
+
+            .arrow {
+                display: none;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+            }
+
+            footer .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            section {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .title {
+                font-size: 1.8rem;
+            }
+
+            .section__pic-container {
+                width: 180px;
+                height: 180px;
+            }
+
+            .btn {
+                width: 160px;
+                font-size: 0.85rem;
+            }
+
+            .contact-info-upper-container {
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+
+            .text-container,
+            .details-container,
+            .color-container {
+                padding: 1rem;
+            }
+        }
+
+        /* SCROLL ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
 </head>
 <body>
-        <nav id="desktop-nav">
+    <nav id="desktop-nav">
         <div class="logo">Michael Matsuda</div>
         <div>
             <ul class="nav-links">
@@ -19,7 +806,8 @@
                 <li><a href="#contacts">Contact</a></li>
             </ul>
         </div>
-        </nav>
+    </nav>
+
     <nav id="hamburger-nav">
         <div class="logo">Michael Matsuda</div>
         <div class="hamburger-menu">
@@ -33,181 +821,184 @@
                 <li><a href="#experience" onclick="togglemenu()">Experience</a></li>
                 <li><a href="#projects" onclick="togglemenu()">Projects</a></li>
                 <li><a href="#contacts" onclick="togglemenu()">Contact</a></li>
-             </div>
+            </div>
         </div>
     </nav>
-        <section id="profile">
-            <div class="section__pic-container">
-                <img src="./assets/profile-pic.png" alt="Michael Matsuda profile picture" />
-            </div>
-            <div class="section__text">
-                <p class="section__text__p1">Hello, I'm</p>
-                <h1 class="title">Michael Matsuda</h1>
-                <p class="section__text__p2">Mathematics & Engineering Student</p>
-                <div class="btn-container">
-                    <button class="btn btn-color-2" onclick="window.open('./assets/Michael.Matsuda.Resume.Sept.pdf')">Resume</button>
-                    <button class="btn btn-color-1" onclick="location.href='./#contacts'">Contact Info</button>
-                </div>
-                <div id="socials-container">
-                    <img src="./assets/linkedin.png" alt="My LinkedIn Profile" class = "icon" onclick="location.href='https://www.linkedin.com/in/michaelmatsuda'">
-                     <img src="./assets/github.png" alt="My Github profile" class = "icon" onclick="location.href='https://github.com/WomboCombo1012'">
-                </div>
-            </div>
-        </section>
-        <section id="about">
-            <p class="section__text__p1">Get To Know More</p>
-            <h1 class="title">About Me</h1>
-            <div class="section-container">
-                <div class="section__pic-container">
-                    <img src="./assets/about-pic.png", alt="Profile picture" class="about-pic">
-                </div>
-                <div class="about-details-container">
-                    <div class="about-containers">
-                        <div class="details-container">
-                            <img src="./assets/QueensLogo_colour.png" alt="education icon" class="icon education-icon">
-                            <h3>Education</h3>
-                            <h4>Queen's University</h4>
-                            <p>BASc Applied Mathematics & Computer Engineering<br /></p>
-                        </div>
-                    </div>
-                    <div class="text-container">
-                        <p>Hi, I’m Michael, a Mathematics and Engineering student at Queen’s University with a passion
-                            for solving complex problems at the intersection of technology, sustainability, and
-                            design. Whether I’m working on dam breach simulations, building machine learning models, or
-                            organizing campus events, I bring curiosity, structure, and creativity to everything I do.<p>
-                            I’m currently contributing to research in civil engineering and exploring how data-driven
-                            tools can inform real-world decisions in infrastructure and environmental systems. Outside
-                            of academics, I’ve been actively involved in leadership roles during Orientation Week and
-                            love collaborating with others to build welcoming, inclusive communities. <p>
 
-                            This site is where I share projects, ideas, and the journey along the way. Thanks for
-                            stopping by!</p>
-                    </div>
-                </div>
-            </div>
-            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#experience'">
-        </section>
-        <section id="experience">
-            <p class="section__text__p1">Explore My</p>
-            <h1 class="title">Experience</h1>
-            <div class="experience-details">
-                        <h2 class="expeirence-sub-title">Undergraduate Research Assistant</h2>
-                                <h3>May 2025 - August 2025</h3>
-                                <h4>Department of Civil Engineering, Queen's University</h4>
-                                <ul>
-                                    <li>Engineered MATLAB scripts and converted preexisting scripts into functions to streamline numerical model testing and experimental planning, reducing model setup time by 90%.</li>
-                                    <li>Conducted research on the numerical methods used to model dam breach failures, successfully identifying key characteristics which affect model accuracy.</li>
-                                    <li>Conducted data analysis and applied different regression models to predict rheological characteristics of tailings materials.</li>
-                                </ul>
-                        <br>
-                        <h2 class="expeirence-sub-title">Sales and Growth Intern</h2>
-                                <h3>July 2025 - August 2025</h3>
-                                <h4>Amaranth Technology Inc.</h4>
-                                <ul>
-                                    <li>Spearheaded the generation of 7 strategic insights into novel applications of
-                                    AI within the life sciences industry, identifying 3 high-potential opportunities
-                                    for innovation and growth.</li>
-                                    <li>Conducted 5+ in-depth informational interviews with leading industry professionals
-                                    and academic experts (eg. VPs of R&D, Principal Scientists, Professors), effectively
-                                    gathering proprietary market intelligence and validating emerging AI trends.</li>
-                                    <li>Synthesized complex qualitative data and independent research to develop a
-                                    comprehensive report and presentation, significantly enhancing the team's understanding
-                                    of competitive landscapes and informing key strategic decisions.</li>
-                                </ul>
-                        <br>
-                        <h2 class="expeirence-sub-title">Co-Director of Investment Strategy</h2>
-                                <h3>March 2025 - Present</h3>
-                                <h4>Queen's University Business and Engineering</h4>
-                                <ul>
-                                    <li>Led and mentored a team of 50+ members, significantly elevating their financial
-                                    literacy and investment understanding through the design and delivery of 6 comprehensive
-                                    workshops on complex financial concepts.</li>
-                                    <li>Directed the strategic development and analysis of a mock investment portfolio
-                                    valued at $120k, overseeing 6 analytical projects such as rigorous stock pitches
-                                    and in-depth industry reports, enhancing members' practical research skills.</li>
-                                    <li>Cultivated 5+ strategic partnerships with industry professionals and organizations,
-                                    securing several new educational resources and exclusive networking opportunities
-                                    for the team.</li>
-                                </ul>
-                        <br>
-                        <h2 class="expeirence-sub-title">AI Engineer</h2>
-                                <h3>May 2024 - May 2025</h3>
-                                <h4>Outlier</h4>
-                                <ul>
-                                    <li>Engineered and optimized over 200 prompts for various applications (eg. content
-                                        generation, summarization), improving LLM output accuracy by an average of 18%
-                                        and reducing inference latency by 10-15% for key models.</li>
-                                    <li>Conducted over 50 rigorous A/B tests in collaboration with AI research teams,
-                                    systematically evaluating prompt effectiveness and directly contributing to improved
-                                    model output quality by a measurable 1.5 standard deviations on key benchmarks.</li>
-                                    <li>Optimized AI interactions and user experiences by 10% by providing
-                                    expert feedback on previous user interactions.</li>
-                                </ul>
-                        <br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#projects'">
-
-        </section>
-       <section id="projects">
-    <p class="section__text__p1">Browse my Recent</p>
-    <h1 class="title">Projects</h1>
-    <div class="project-details-container">
-        <div class="projects-grid">
-
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/Dashboard_Image.png" alt="Project 1" class="project-img" onclick="location.href='https://stock-options-pricing-project-michael.streamlit.app'">
-                </div>
-                <h2 class="experience-sub-title project-title">Options Pricing Dashboard</h2>
-            </div>
-
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/Model-error-comparison.png" alt="Project 1" class="project-img" onclick="location.href='https://github.com/WomboCombo1012/Concrete-Compressive-Strength-Prediction'">
-                </div>
-                <h2 class="experience-sub-title project-title">Concrete Compressive Strength Prediction</h2>
-            </div>
-
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/Data-scraping-project-image.jpg" alt="Project 1" class="project-img" onclick="location.href='https://github.com/WomboCombo1012/data-scraping.git'">
-                </div>
-                <h2 class="experience-sub-title project-title">HTML Webscraping</h2>
-            </div>
-
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="./assets/profile-pic.png" alt="Michael Matsuda profile picture" />
         </div>
-    </div>
-            <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#contacts'">
-        </section>
-        <section id="contacts">
-            <p class="section__text__p1">Get In Touch</p>
-            <h1 class="title">Contact Me</h1>
-            <div class="contact-info-upper-container">
-                <div class="contact-info-container">
-                    <img src="./assets/email.png" alt="Email icon" class="icon contact-icon">
-                    <p><a href="mailto:michaeljmatsuda@gmail.com">michaeljmatsuda@gmail.com</a></p>
+        <div class="section__text">
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title">Michael Matsuda</h1>
+            <p class="section__text__p2">Mathematics & Engineering Student</p>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="window.open('./assets/Michael.Matsuda.Resume.Sept.pdf')">Resume</button>
+                <button class="btn btn-color-1" onclick="location.href='./#contacts'">Contact Info</button>
+            </div>
+            <div id="socials-container">
+                <img src="./assets/linkedin.png" alt="My LinkedIn Profile" class="icon" onclick="location.href='https://www.linkedin.com/in/michaelmatsuda'">
+                <img src="./assets/github.png" alt="My Github profile" class="icon" onclick="location.href='https://github.com/WomboCombo1012'">
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="./assets/about-pic.png" alt="Profile picture" class="about-pic">
+            </div>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <img src="./assets/QueensLogo_colour.png" alt="education icon" class="icon education-icon">
+                        <h3>Education</h3>
+                        <h4>Queen's University</h4>
+                        <p>BASc Applied Mathematics & Computer Engineering</p>
+                    </div>
                 </div>
-                 <div class="contact-info-container">
-                    <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon">
-                    <p><a href="https://www.linkedin.com/in/michaelmatsuda">LinkedIn</a></p>
+                <div class="text-container">
+                    <p>I'm Michael, an Applied Mathematics and Computer Engineering student at Queen's University with interests in software development, artificial intelligence, machine learning, and quantitative finance.</p>
+
+                    <p>In terms of research, I am fascinated by the elegant solutions found in mathematical analysis, and am particularly interested in the field of stochastic analysis.</p>
+
+                    <p>Outside of work and academics, I have a deep passion for weightlifting and bodybuilding, and am currently on the road to bench pressing 3 plates!</p>
                 </div>
             </div>
-        </section>
-        <footer>
-            <nav>
+        </div>
+    </section>
+
+    <section id="experience">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Experience</h1>
+        <div class="experience-details">
+            <h2 class="experience-sub-title">Undergraduate Research Assistant</h2>
+            <h3>May 2025 - August 2025</h3>
+            <h4>Department of Civil Engineering, Queen's University</h4>
+            <ul>
+                <li>Engineered MATLAB scripts and converted preexisting scripts into functions to streamline numerical model testing and experimental planning, reducing model setup time by 90%.</li>
+                <li>Conducted research on the numerical methods used to model dam breach failures, successfully identifying key characteristics which affect model accuracy.</li>
+                <li>Conducted data analysis and applied different regression models to predict rheological characteristics of tailings materials.</li>
+            </ul>
+            <br>
+            <h2 class="experience-sub-title">Sales and Growth Intern</h2>
+            <h3>July 2025 - August 2025</h3>
+            <h4>Amaranth Technology Inc.</h4>
+            <ul>
+                <li>Spearheaded the generation of 7 strategic insights into novel applications of AI within the life sciences industry, identifying 3 high-potential opportunities for innovation and growth.</li>
+                <li>Conducted 5+ in-depth informational interviews with leading industry professionals and academic experts (eg. VPs of R&D, Principal Scientists, Professors), effectively gathering proprietary market intelligence and validating emerging AI trends.</li>
+                <li>Synthesized complex qualitative data and independent research to develop a comprehensive report and presentation, significantly enhancing the team's understanding of competitive landscapes and informing key strategic decisions.</li>
+            </ul>
+            <br>
+            <h2 class="experience-sub-title">Co-Director of Investment Strategy</h2>
+            <h3>March 2025 - Present</h3>
+            <h4>Queen's University Business and Engineering</h4>
+            <ul>
+                <li>Led and mentored a team of 50+ members, significantly elevating their financial literacy and investment understanding through the design and delivery of 6 comprehensive workshops on complex financial concepts.</li>
+                <li>Directed the strategic development and analysis of a mock investment portfolio valued at $120k, overseeing 6 analytical projects such as rigorous stock pitches and in-depth industry reports, enhancing members' practical research skills.</li>
+                <li>Cultivated 5+ strategic partnerships with industry professionals and organizations, securing several new educational resources and exclusive networking opportunities for the team.</li>
+            </ul>
+            <br>
+            <h2 class="experience-sub-title">AI Engineer</h2>
+            <h3>May 2024 - May 2025</h3>
+            <h4>Outlier</h4>
+            <ul>
+                <li>Engineered and optimized over 200 prompts for various applications (eg. content generation, summarization), improving LLM output accuracy by an average of 18% and reducing inference latency by 10-15% for key models.</li>
+                <li>Conducted over 50 rigorous A/B tests in collaboration with AI research teams, systematically evaluating prompt effectiveness and directly contributing to improved model output quality by a measurable 1.5 standard deviations on key benchmarks.</li>
+                <li>Optimized AI interactions and user experiences by 10% by providing expert feedback on previous user interactions.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <p class="section__text__p1">Browse my Recent</p>
+        <h1 class="title">Projects</h1>
+        <div class="project-details-container">
+            <div class="projects-grid">
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/Dashboard_Image.png" alt="Options Pricing Dashboard" class="project-img" onclick="location.href='https://stock-options-pricing-project-michael.streamlit.app'">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Options Pricing Dashboard</h2>
+                </div>
+
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/Model-error-comparison.png" alt="Concrete Strength Prediction" class="project-img" onclick="location.href='https://github.com/WomboCombo1012/Concrete-Compressive-Strength-Prediction'">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Concrete Compressive Strength Prediction</h2>
+                </div>
+
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/Data-scraping-project-image.jpg" alt="Web Scraping Project" class="project-img" onclick="location.href='https://github.com/WomboCombo1012/data-scraping.git'">
+                    </div>
+                    <h2 class="experience-sub-title project-title">HTML Webscraping</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts">
+        <p class="section__text__p1">Get In Touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="Email icon" class="icon contact-icon">
+                <p><a href="mailto:michaeljmatsuda@gmail.com">michaeljmatsuda@gmail.com</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon">
+                <p><a href="https://www.linkedin.com/in/michaelmatsuda">LinkedIn</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <nav>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contacts">Contact</a></li>
             </ul>
-        </div>
-            </nav>
-            <p>Made by Michael Matsuda 2025</p>
-        </footer>
-    <script src="script.js"></script>
+        </nav>
+        <p>Made by Michael Matsuda 2025</p>
+    </footer>
+
+    <script>
+        function togglemenu() {
+            const menu = document.querySelector(".menu-links");
+            const icon = document.querySelector(".hamburger-icon");
+            menu.classList.toggle("open");
+            icon.classList.toggle("open");
+        }
+
+        // Add scroll animations
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('section');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('fade-in');
+                }
+            });
+        });
+
+        // Update navigation bar on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 15, 35, 0.95)';
+            } else {
+                nav.style.background = 'rgba(15, 15, 35, 0.9)';
+            }
+        });
+    </script>
 </body>
 </html>
